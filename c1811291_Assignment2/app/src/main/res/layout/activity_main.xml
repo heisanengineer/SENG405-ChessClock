@@ -35,6 +35,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,7 +52,7 @@
             android:id="@+id/buttonLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="start"
+            android:onClick="change"
 
             android:text="@string/buttonLeft"
             android:textColor="@color/white"
@@ -70,7 +71,7 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.568"
+            app:layout_constraintHorizontal_bias="0.632"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -104,8 +105,8 @@
 
         <TextView
             android:id="@+id/textTop"
-            android:layout_width="13dp"
-            android:layout_height="70dp"
+            android:layout_width="19dp"
+            android:layout_height="67dp"
             android:layout_marginBottom="-40dp"
             android:rotation="180"
             android:text=":"
@@ -113,9 +114,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/buttonCenter"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.53"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.265" />
+            app:layout_constraintVertical_bias="0.25" />
 
         <TextView
             android:id="@+id/textTop2"
@@ -144,7 +146,7 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textBot2"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.171"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonCenter"
             app:layout_constraintVertical_bias="0.0" />
@@ -176,6 +178,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonLeft"
             app:layout_constraintVertical_bias="0.555" />
+
+        <EditText
+            android:id="@+id/textInput"
+            android:layout_width="73dp"
+            android:layout_height="49dp"
+            android:ems="10"
+            android:inputType="number"
+            android:onClick="change"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textBot"
+            app:layout_constraintStart_toEndOf="@+id/textBot1"
+            app:layout_constraintTop_toBottomOf="@+id/buttonLeft" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -200,6 +215,7 @@
             app:layout_constraintBaseline_toBaselineOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

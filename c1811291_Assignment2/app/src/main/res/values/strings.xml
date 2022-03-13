@@ -3,7 +3,7 @@
     <string name="buttonBot" ><font size='40'>START</font></string>
     <string name="buttonTop" ><font size='40'>START</font></string>
     <string name="buttonCenter" ><font size='25'>PAUSE</font></string>
-    <string name="buttonLeft" ><font size='25'>START</font></string>
+    <string name="buttonLeft" ><font size='25'>CHANGE</font></string>
     <string name="buttonRight" ><font size='25'>RESET</font></string>
     <string name="txt2" ><font size='40'>00</font></string>
     <string name="txt" ><font size='40'>00</font></string>

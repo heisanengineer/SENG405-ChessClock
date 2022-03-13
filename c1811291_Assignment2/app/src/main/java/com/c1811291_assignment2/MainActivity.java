@@ -1,16 +1,24 @@
 package com.c1811291_assignment2;
+import static java.lang.Integer.parseInt;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 
 public class MainActivity extends AppCompatActivity {
     Runnable runnable;
     Handler handler;
 
+    EditText textinput;
     TextView textView1;
     TextView textView2;
     TextView textView3;
@@ -21,11 +29,13 @@ public class MainActivity extends AppCompatActivity {
     Button button4;
     Button button5;
 
-    int i;
-    int second;
-    int minute;
+    int i=0;
+    int second=0;
+    int minute=0;
     int whichPlayer=0;
     int j=1;
+    int maxMinute=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         button3 = findViewById(R.id.buttonLeft);
         button4 = findViewById(R.id.buttonRight);
         button5 = findViewById(R.id.buttonCenter);
+        textinput = findViewById(R.id.textInput);
 
         button.setEnabled(true);
         button2.setEnabled(true);
@@ -47,15 +58,13 @@ public class MainActivity extends AppCompatActivity {
         button4.setEnabled(true);
         button5.setEnabled(true);
 
-        second =0;
-        minute=0;
-        i=0;
+
 
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 i++;
-                second=0;
+                second=00;
                 minute=0;
                 textView1.setText(" "+second);
                 textView2.setText(" "+minute);
@@ -102,22 +111,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
-
-        button3.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-
-                second=0;
-                minute=0;
-                start(textView1);
-                button.setText("START");
-                button2.setText("STOP");
-                i++;
-            }
-        });
     }
 
+    public void change(View view){
 
+        maxMinute = parseInt(textinput.getText().toString());
+
+    }
     public void start (View view)
     {
 
@@ -125,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         runnable = new Runnable() {
             @Override
             public void run() {
+                if(maxMinute>minute) {
                 textView1.setText(""+second);
                 textView2.setText(""+minute);
                 second++;
@@ -135,7 +136,10 @@ public class MainActivity extends AppCompatActivity {
                 textView1.setText(""+second);
                 textView2.setText(""+minute);
                 handler.postDelayed(runnable,1000);
-            }
+            }else{
+                    Toast.makeText(getApplicationContext(),"TIME IS UP!",Toast.LENGTH_SHORT).show();
+                    stop(textView1);
+                }}
         };handler.post(runnable);
     }
 
@@ -145,16 +149,22 @@ public class MainActivity extends AppCompatActivity {
         runnable = new Runnable() {
             @Override
             public void run() {
-                textView3.setText(""+second);
-                textView4.setText(""+minute);
-                second++;
-                if(second==60){
-                    minute++;
-                    second=0;
+
+                if(maxMinute>minute) {
+                    textView3.setText("" + second);
+                    textView4.setText("" + minute);
+                    second++;
+                    if (second == 60) {
+                        minute++;
+                        second = 0;
+                    }
+                    textView3.setText("" + second);
+                    textView4.setText("" + minute);
+                    handler.postDelayed(runnable, 1000);
+                }else{
+                    Toast.makeText(getApplicationContext(),"TIME IS UP!",Toast.LENGTH_LONG).show();
+                    stop(textView1);
                 }
-                textView3.setText(""+second);
-                textView4.setText(""+minute);
-                handler.postDelayed(runnable,1000);
             }
         };handler.post(runnable);
 
@@ -162,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void pause(View view)
     {
-
+        button3.setEnabled(true);
         handler.removeCallbacks(runnable);
 
         if (j==1){
@@ -195,6 +205,7 @@ public class MainActivity extends AppCompatActivity {
         textView2.setText(""+minute);
         textView3.setText(""+second);
         textView4.setText(""+minute);
+        button3.setEnabled(true);
     }
 
 
