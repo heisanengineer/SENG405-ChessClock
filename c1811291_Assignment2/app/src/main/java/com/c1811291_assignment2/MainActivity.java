@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     int minute=0;
     int whichPlayer=0;
     int j=1;
-    int maxMinute=0;
+    int maxMinute=5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
