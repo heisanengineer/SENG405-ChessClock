@@ -1,2 +1,2 @@
 # SENG405-ChessClock
-Assignment 2
+Assignment 1
