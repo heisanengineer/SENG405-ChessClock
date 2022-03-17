@@ -10,7 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-
 public class MainActivity extends AppCompatActivity {
     Runnable runnable;
     Handler handler;
@@ -25,13 +24,12 @@ public class MainActivity extends AppCompatActivity {
     Button button4;
     Button button5;
 
-    int i=0;
-    int second=0;
-    int minute=0;
-    int whichPlayer=0;
-    int j=1;
-    int maxMinute=5;
-
+    int i = 0;
+    int second = 0;
+    int minute = 0;
+    int whichPlayer = 0;
+    int j = 1;
+    int maxMinute = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         button4.setEnabled(false);
         button5.setEnabled(true);
 
-
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -76,30 +73,37 @@ public class MainActivity extends AppCompatActivity {
         button3.setText("CHANGED");
         button3.setBackgroundColor(Color.BLACK);
     }
+
     public void start (View view)
     {
         handler = new Handler();
         runnable = new Runnable() {
             @Override
             public void run() {
-                if(maxMinute>minute) {
-                textView1.setText(""+second);
-                textView2.setText(""+minute);
-                second++;
-                if(second==60){
+                if (maxMinute > minute) 
+                {
+                    textView1.setText(""+second);
+                    textView2.setText(""+minute);
+                    second++;
+
+                if (second == 60)
+                {
                     minute++;
-                    second=0;
+                    second = 0;
                 }
                 textView1.setText(""+second);
                 textView2.setText(""+minute);
                 handler.postDelayed(runnable,1000);
-            }else{
+            }
+            else
+            {
                     stop(textView1);
                     button.setText("TIME IS UP!");
                     button.setBackgroundColor(Color.BLACK);
                     button2.setText("WIN!");
                     button2.setBackgroundColor(Color.RED);
-                }}
+                }
+            }
         };handler.post(runnable); button4.setEnabled(true);
     }
 
@@ -109,18 +113,25 @@ public class MainActivity extends AppCompatActivity {
         runnable = new Runnable() {
             @Override
             public void run() {
-                if(maxMinute>minute) {
+                if (maxMinute > minute) 
+                {
                     textView3.setText("" + second);
                     textView4.setText("" + minute);
                     second++;
-                    if (second == 60) {
+
+                    if (second == 60) 
+                    {
                         minute++;
                         second = 0;
                     }
+
                     textView3.setText("" + second);
                     textView4.setText("" + minute);
                     handler.postDelayed(runnable, 1000);
-                }else{
+
+                }
+                else
+                {
                     stop(textView1);
                     button2.setText("TIME IS UP!");
                     button2.setBackgroundColor(Color.BLACK);
@@ -136,17 +147,23 @@ public class MainActivity extends AppCompatActivity {
         button3.setEnabled(true);
         handler.removeCallbacks(runnable);
 
-        if (j==1){
+        if (j == 1)
+        {
             button5.setText("PLAY");
-            j=2;
-        }else if(j==2){
+            j = 2;
+        }
+        else if (j == 2)
+        {
             button5.setText("PAUSE");
-            j=1;
+            j = 1;
 
-            if (whichPlayer == 1) {
+            if (whichPlayer == 1) 
+            {
                 start(view);
 
-            } else if (whichPlayer == 2) {
+            } 
+            else if (whichPlayer == 2) 
+            {
                 start2(view);
             }
         }
@@ -156,9 +173,9 @@ public class MainActivity extends AppCompatActivity {
     {
         button4.setEnabled(true);
         handler.removeCallbacks(runnable);
-        second=0;
-        minute=0;
-        i=0;
+        second = 0;
+        minute = 0;
+        i = 0;
         button5.setText("PAUSE");
         textView1.setText(""+second);
         textView2.setText(""+minute);
@@ -172,47 +189,53 @@ public class MainActivity extends AppCompatActivity {
 
     public void player1(){
         i++;
-        second=00;
-        minute=0;
+        second = 00;
+        minute = 0;
         textView1.setText(" "+second);
         textView2.setText(" "+minute);
 
-        if (i == 1) {
+        if (i == 1) 
+        {
             start(textView1);
             button.setText("STOP");
             button2.setText("START");
-            whichPlayer=1;
+            whichPlayer = 1;
 
-        } else if (i == 2) {
+        } 
+        else if (i == 2) 
+        {
             stop(textView1);
             button.setText("START");
             button2.setText("STOP");
             i = 1;
             start2(textView1);
-            whichPlayer=2;
+            whichPlayer = 2;
         }
     }
 
     public void player2(){
         i++;
-        second=0;
-        minute=0;
+        second = 0;
+        minute = 0;
         textView3.setText(""+second);
         textView4.setText(""+minute);
 
-        if (i == 1) {
+        if (i == 1) 
+        {
             start2(textView1);
             button.setText("START");
             button2.setText("STOP");
-            whichPlayer=0;
+            whichPlayer = 0;
 
-        } else if (i == 2) {
+        } 
+        else if (i == 2) 
+        {
             stop(textView1);
             button2.setText("START");
             button.setText("STOP");
             i = 1;
             start(textView1);
-            whichPlayer =1;
+            whichPlayer = 1;
         }
     }
 }
